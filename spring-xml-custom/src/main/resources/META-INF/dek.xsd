@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://mysite.com/schema/dek"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://mysite.com/schema/dek"
+            elementFormDefault="qualified">
+
+
+    <xsd:element name="mybean">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:int" use="required"/>
+            <xsd:attribute name="name" type="xsd:string" />
+        </xsd:complexType>
+    </xsd:element>
+
+
+</xsd:schema>
