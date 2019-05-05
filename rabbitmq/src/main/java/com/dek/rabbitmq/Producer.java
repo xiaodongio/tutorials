@@ -41,8 +41,14 @@ public class Producer {
             channel.basicPublish(EXCHANGE_NAME , ROUTING_KEY ,
                     MessageProperties.PERSISTENT_TEXT_PLAIN ,
                     message.getBytes()) ;
-        }
 
+
+        }
+        try {
+            Thread.sleep(Long.MAX_VALUE);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 
