@@ -1,0 +1,6 @@
+spring:
+  rabbitmq:
+    username: root
+    password: 123
+  thymleaf:
+    cache: false

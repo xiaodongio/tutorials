@@ -1,0 +1,164 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html;charset=utf-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link th:href="@{https://cdn.bootcss.com/bulma/0.7.4/css/bulma.css}" rel="stylesheet"/>
+</head>
+<body>
+    <nav class="navbar has-shadow is-spaced">
+        <div class="container">
+            <h1 class="title">消息发送</h1>
+        </div>
+    </nav>
+
+    <main style=" margin-top: 1rem;">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-6">
+                    <div class="card">
+                        <header class="card-header">
+                            <p class="card-header-title">
+                                Direct Exchange
+                            </p>
+                        </header>
+                        <div class="card-content">
+
+                            <form id="f1">
+                                <div class="field">
+                                    <label class="label">id</label>
+                                    <div class="control">
+                                        <input class="input is-info" name="id" placeholder="Info input">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label class="label">no</label>
+                                    <div class="control">
+                                        <input class="input is-info" name="no" placeholder="Info input">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label class="label">routingKey</label>
+                                    <div class="control">
+                                        <div class="select is-rounded">
+                                            <select name="routingKey">
+                                                <option>changjiang</option>
+                                                <option>yangtze</option>
+                                                <option>yellowRiver</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field is-grouped">
+                                    <div class="control">
+                                        <button id="direct" class="button is-link" type="button">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-6">
+                    <div class="card">
+                        <header class="card-header">
+                            <p class="card-header-title">
+                                Fanout Exchange
+                            </p>
+                        </header>
+                        <div class="card-content">
+
+                            <form id="f2">
+                                <div class="field">
+                                    <label class="label">id</label>
+                                    <div class="control">
+                                        <input class="input is-info" name="id" placeholder="Info input">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label class="label">no</label>
+                                    <div class="control">
+                                        <input class="input is-info" name="no" placeholder="Info input">
+                                    </div>
+                                </div>
+                                <div class="field is-grouped">
+                                    <div class="control">
+                                        <button id="fanout" class="button is-link" type="button">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="columns">
+                <div class="column is-6">
+                    <div class="card">
+                        <header class="card-header">
+                            <p class="card-header-title">
+                                Topic Exchange
+                            </p>
+                        </header>
+                        <div class="card-content">
+
+                            <form id="f3">
+                                <div class="field">
+                                    <label class="label">id</label>
+                                    <div class="control">
+                                        <input class="input is-info" name="id" placeholder="id">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label class="label">name</label>
+                                    <div class="control">
+                                        <input class="input is-info" name="no" placeholder="no">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label class="label">routingKey</label>
+                                    <div class="control">
+                                        <input class="input is-info" name="routingKey" placeholder="routingKey">
+                                    </div>
+                                </div>
+                                <div class="field is-grouped">
+                                    <div class="control">
+                                        <button id="topic" class="button is-link" type="button">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+<script th:src="@{https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js}"></script>
+<script th:inline="javascript">
+    $(document).ready(function(){
+
+        $("#direct").click(function(){
+            console.log($("#f1").serialize());
+            $.post("direct",$("#f1").serialize(),function(){
+                alert("发布成功");
+            });
+        });
+
+        $("#fanout").click(function(){
+            $.post("fanout",$("#f2").serialize(),function(){
+                alert("发布成功");
+            });
+        });
+
+        $("#topic").click(function(){
+            $.post("topic",$("#f3").serialize(),function(){
+                alert("发布成功");
+            });
+        });
+
+    });
+
+</script>
+</html>
