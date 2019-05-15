@@ -14,7 +14,7 @@ public class UserService {
 	private TransactionMonitor monitor;
 
 	public void add1() {
-		System.out.println(" userService add...");
+		System.out.println(" userService add1...");
 		TransactionStatus begin = null;
 		try {
 			begin = monitor.begin();
@@ -26,5 +26,11 @@ public class UserService {
 			monitor.rollback(begin);
 		}
 	}
+
+    public void add2() {
+        System.out.println(" userService add2...");
+        userDao.add("dek", 18);
+        int i = 1/0;
+    }
 
 }

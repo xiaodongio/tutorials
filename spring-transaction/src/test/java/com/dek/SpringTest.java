@@ -14,4 +14,11 @@ public class SpringTest {
         userService.add1();
     }
 
+    @Test
+    public void test2() {
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+        UserService userService = context.getBean(UserService.class);
+        userService.add2();
+    }
+
 }
