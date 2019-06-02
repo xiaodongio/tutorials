@@ -5,8 +5,12 @@ import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.Charset;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class PlainOioServer {
+
+    private Executor executor = Executors.newFixedThreadPool(10);
 
     public void init() throws IOException {
         final ServerSocket serverSocket = new ServerSocket(1024);
@@ -14,8 +18,8 @@ public class PlainOioServer {
             for (;;) {
                 final Socket socket = serverSocket.accept();
                 System.out.println("Accepted connection from"  + socket);
-                // 创建一个新线程处理
-                new Thread(() -> {
+
+                executor.execute(() -> {
                     OutputStream out;
                     try {
                         out = socket.getOutputStream();
@@ -34,7 +38,7 @@ public class PlainOioServer {
                         }
                     }
 
-                }).start();
+                });
             }
         } catch (IOException e) {
             e.printStackTrace();
