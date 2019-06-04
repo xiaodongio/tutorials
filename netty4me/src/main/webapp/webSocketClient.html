@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket Client</title>
+</head>
+<body>
+    <textarea id="request" style="width: 500px; height: 400px">
+
+    </textarea>
+    <button onclick="send()">提交</button>
+    <textarea id="response" style="width: 500px; height: 400px">
+
+    </textarea>
+    <button onclick="document.getElementById('response').value = ''">清空</button>
+</body>
+
+<script type="text/javascript">
+    let socket;
+    if (window.WebSocket) {
+        socket = new WebSocket('ws://localhost:8080/ws');
+
+        socket.onmessage = (event) => {
+            let response = document.getElementById('response');
+            response.value += '\n' + event.data;
+        }
+
+        socket.onopen = (event) => {
+            let response = document.getElementById('response');
+            response.value = 'connected!'
+        }
+
+        socket.onclose = (event) => {
+            let response = document.getElementById('response');
+            response.value = 'disconnect!'
+        }
+    }
+
+
+    function send() {
+        if (socket && socket.readyState == WebSocket.OPEN) {
+            socket.send(document.getElementById('request').value);
+        }
+    }
+
+</script>
+</html>
