@@ -1,0 +1,12 @@
+syntax="proto3";
+
+package proto;
+
+option java_package = "com.dek.proto";
+option java_multiple_files = true;
+
+message Student {
+    int64 id = 1;
+    string name = 2;
+    string address = 3;
+}
