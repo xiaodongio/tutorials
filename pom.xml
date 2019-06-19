@@ -13,6 +13,7 @@
         <module>spring-xml-custom</module>
         <module>netty4me</module>
         <module>spring-transaction</module>
+        <module>java-io</module>
     </modules>
     <packaging>pom</packaging>
 
