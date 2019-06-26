@@ -14,6 +14,7 @@
         <module>netty4me</module>
         <module>spring-transaction</module>
         <module>java-io</module>
+        <module>java-nio</module>
     </modules>
     <packaging>pom</packaging>
 
