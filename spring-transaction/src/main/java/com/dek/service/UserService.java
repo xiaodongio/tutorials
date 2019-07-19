@@ -33,4 +33,9 @@ public class UserService {
         int i = 1/0;
     }
 
+
+    public void testData() {
+		userDao.testData(10000);
+	}
+
 }
