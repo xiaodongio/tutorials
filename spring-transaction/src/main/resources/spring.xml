@@ -2,30 +2,39 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="
-        http://www.springframework.org/schema/beans
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/aop
-        http://www.springframework.org/schema/aop/spring-aop.xsd">
+        http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <import resource="classpath:db.xml" />
 
-    <aop:aspectj-autoproxy/>
+    <!--<aop:aspectj-autoproxy/>-->
 
-    <!-- 切面类 -->
-    <bean id="aop" class="com.dek.transaction.TransactionAop"/>
+    <!--&lt;!&ndash; 切面类 &ndash;&gt;-->
+    <!--<bean id="aop" class="com.dek.transaction.TransactionAop"/>-->
 
-    <aop:config>
-        <aop:pointcut id="transaction" expression="execution(* com.dek.service.*.*(..))"/>
-        <aop:aspect ref="aop">
-            <!-- 环绕通知 -->
-            <aop:around method="around" pointcut-ref="transaction"/>
-            <!-- 异常通知 -->
-            <aop:after-throwing method="afterThrowing" pointcut-ref="transaction"/>
-        </aop:aspect>
-    </aop:config>
+    <!--<aop:config>-->
+        <!--<aop:pointcut id="transaction" expression="execution(* com.dek.service.*.*(..))"/>-->
+        <!--<aop:aspect ref="aop">-->
+            <!--&lt;!&ndash; 环绕通知 &ndash;&gt;-->
+            <!--<aop:around method="around" pointcut-ref="transaction"/>-->
+            <!--&lt;!&ndash; 异常通知 &ndash;&gt;-->
+            <!--<aop:after-throwing method="afterThrowing" pointcut-ref="transaction"/>-->
+        <!--</aop:aspect>-->
+    <!--</aop:config>-->
+
+
+    <!-- 事务管理器配置, Hibernate单数据源事务 -->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- 使用annotation定义事务 -->
+    <tx:annotation-driven transaction-manager="txManager" proxy-target-class="true" />
 
 </beans>
+

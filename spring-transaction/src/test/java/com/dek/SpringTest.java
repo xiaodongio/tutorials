@@ -31,4 +31,16 @@ public class SpringTest {
 //        }
     }
 
+
+    @Test
+    public void test4() {
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+        UserService userService = context.getBean(UserService.class);
+        try {
+            userService.save("123", 16);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

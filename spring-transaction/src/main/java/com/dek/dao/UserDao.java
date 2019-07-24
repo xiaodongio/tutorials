@@ -21,8 +21,8 @@ public class UserDao {
 
 	public void add(String name, Integer age) {
 		System.out.println("userDao add....");
-		String sql = "insert into user(id, name, age) values (?, ?, ?);";
-		int update = jdbcTemplate.update(sql, UUIDUtil.getId(), name, age);
+		String sql = "insert into t_user(name, age) values (?, ?);";
+		int update = jdbcTemplate.update(sql, name, age);
 		System.out.println("insert result " + update);
 	}
 
