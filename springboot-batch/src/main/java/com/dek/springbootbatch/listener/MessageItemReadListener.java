@@ -28,7 +28,7 @@ public class MessageItemReadListener implements ItemReadListener<Message> {
     @Override
     public void onReadError(Exception e) {
 
-        errorWriter.write(format("%s%n", e.getMessage()));
+//        errorWriter.write(format("%s%n", e.getMessage()));
     }
 
 }

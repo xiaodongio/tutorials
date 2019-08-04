@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.io.Writer;
 import java.util.List;
 
+import static java.lang.String.format;
+
 public class MessageWriteListener implements ItemWriteListener<Message> {
 
     @Autowired
@@ -24,9 +26,9 @@ public class MessageWriteListener implements ItemWriteListener<Message> {
 
     @Override
     public void onWriteError(Exception e, List<? extends Message> list) {
-        errorWriter.write(format("%s%n", exception.getMessage()));
-        for (Message message : items) {
-            errorWriter.write(format("Failed writing message id: %s", message.getObjectId()));
-        }
+//        errorWriter.write(format("%s%n", e.getMessage()));
+//        for (Message message : list) {
+//            errorWriter.write(format("Failed writing message id: %s", message.getObjectId()));
+//        }
     }
 }
