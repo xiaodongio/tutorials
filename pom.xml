@@ -15,6 +15,7 @@
         <module>spring-transaction</module>
         <module>java-io</module>
         <module>java-nio</module>
+        <module>best-price-finder</module>
     </modules>
     <packaging>pom</packaging>
 
