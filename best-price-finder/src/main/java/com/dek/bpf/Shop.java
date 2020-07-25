@@ -6,6 +6,15 @@ import java.util.concurrent.Future;
 
 public class Shop {
 
+    private String name;
+
+    public Shop(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     private static class RandomHolder {
         private static final SecureRandom RANDOM = new SecureRandom();

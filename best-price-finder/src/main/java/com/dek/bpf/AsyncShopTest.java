@@ -6,7 +6,7 @@ public class AsyncShopTest {
 
     public static void main(String[] args) {
 
-        Shop shop = new Shop();
+        Shop shop = new Shop("tesst");
 
         long start = System.nanoTime();
 
