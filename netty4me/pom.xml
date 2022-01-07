@@ -12,7 +12,7 @@
     <artifactId>netty4me</artifactId>
 
     <properties>
-        <proto.version>3.7.1</proto.version>
+        <proto.version>3.16.1</proto.version>
         <thrift.version>0.12.0</thrift.version>
     </properties>
 
