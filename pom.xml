@@ -26,7 +26,7 @@
         <rabbitmq.version>5.3.0</rabbitmq.version>
         <org.springframework.version>4.3.18.RELEASE</org.springframework.version>
         <netty.version>4.1.36.Final</netty.version>
-        <mysql.version>6.0.3</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
         <HikariCP.version>3.3.1</HikariCP.version>
         <aspectjweaver.version>1.8.9</aspectjweaver.version>
         <aspectjrt.version>1.8.9</aspectjrt.version>
